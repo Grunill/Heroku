@@ -14,14 +14,18 @@ const server = http.createServer((req,res) => {
         });
     }
     if (req.url === '/about'){
-        res.writeHead(200, {'Content-Type':'text/html'});
-        res.write('About');
-        res.end();
+        fs.readFile(path.join(__dirname,'about.html'), (err, data) => {
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.write(data);
+            res.end();
+        });
     }
     if (req.url === '/videos'){
-        res.writeHead(200, {'Content-Type':'text/html'});
-        res.write('Videos');
-        res.end();
+        fs.readFile(path.join(__dirname,'video.html'), (err, data) => {
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.write(data);
+            res.end();
+        });
     }
     if (req.url === '/todo'){
         res.writeHead(200, {'Content-Type':'text/html'});
